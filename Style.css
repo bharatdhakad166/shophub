@@ -1,0 +1,301 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+body {
+  background-color: rgb(205, 205, 205); 
+}
+body::-webkit-scrollbar{
+  display: none;
+}
+#navbar-hero {
+
+  position: sticky;
+  top: 0;
+  z-index: 1000000;
+}
+.navbar {
+  height: 60px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.logo {
+  color: rgb(47, 128, 190);
+  display: flex;
+  font-family: "Dosis", sans-serif;
+}
+.logo img {
+
+  width: 42px;
+  margin-left: 24px;
+  margin-right: 12px;
+}
+.nav-functions {
+  display: flex;
+  align-items: center;
+  gap: 43px;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown button {
+  background-color: transparent;
+  border: none;
+  font-family: "Dosis", sans-serif;
+  font-size: 20px;
+}
+.dropdown-contant {
+  display: none;
+  position: absolute;
+  background-color: white;
+  font-family: "Dosis", sans-serif;
+  z-index: 1;
+  min-width: 103px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 0px 0px 10px 10px;
+}
+.dropdown-contant a {
+  line-height: 30px;
+  display: block;
+}
+.dropdown img {
+  width: 20px;
+  padding-top: 6px;
+}
+.dropdown:hover .dropdown-contant {
+  display: block;
+}
+.dropdown-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+.searchBar {
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.searchBar input {
+  border-radius: 12px;
+  height: 32px;
+  width: 400px;
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  text-align: center;
+  font-family: "Dosis", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+input::placeholder {
+  opacity: 0.3;
+}
+.searchBar img {
+  width: 32px;
+  position: absolute;
+  z-index: 0;
+  padding-left: 364px;
+}
+.nav-functions li {
+  display: flex;
+  align-items: center;
+  font-family: "Dosis", sans-serif;
+  gap: 43px;
+  font-size: 20px;
+}
+.navcontainer a {
+  text-decoration: none;
+  color: black;
+}
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.cart img {
+  width: 20px;
+}
+
+
+
+
+
+.contant {
+
+  background-image: url(images/main-bg-banner.jpg);
+  height: 600px;
+  background-size: 100%;
+  display: flex;
+  align-items: center;
+}
+.contant-details {
+
+  padding-left: 350px;
+  text-align: center;
+  font-family: "Dosis", sans-serif;
+}
+.contant-details p {
+  font-size: 52px;
+}
+.contant-details h1 {
+  font-size: 82px;
+}
+.contant-details button{
+  margin-top: 20px;
+  border-radius: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: "Dosis", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 8px 16px;
+  letter-spacing: 1px;
+}
+.contant-details button:hover{
+  background-color: black;
+  color: white;
+  font-family: "Dosis", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 8px 16px;
+  letter-spacing: 1px;
+  transition: 150ms;
+}
+
+
+
+
+
+.sec2-container{
+
+    margin-top: 50px;
+}
+#line{
+    font-size: 25px;
+    font-family: "Dosis", sans-serif;
+    margin-bottom: 25px;
+    padding-left: 5px;
+}
+.sec2-contant{
+    margin: 0px 50px 50px 50px;
+}
+.sec2-card-container{
+    display: flex;
+    justify-content: space-between;
+}
+.card{
+    height: 300px;
+    width: 200px;
+    object-fit: cover;
+    background-size: 100%;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    font-family: "Dosis", sans-serif;
+    cursor: pointer;
+     transition: transform 0.2s ease;
+}
+.card:hover{
+  transform: scale(1.1);
+ 
+}
+.card p{
+    padding-top: 30px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+#card1{
+    background-image: url(images/Books.jpg);
+}
+#card2{
+    background-image: url(images/furniture.jpg);
+}
+#card3{
+    background-image: url(images/Handbag.jpg);
+}
+#card4{
+    background-image: url(images/Sneakers.jpg);
+}
+#card5{
+    background-image: url(images/Tech.jpg);
+}
+#card6{
+    background-image: url(images/Travel.jpg);
+}
+
+
+
+
+
+.sec3-container{
+  margin-top: 50px;
+}
+.sec3-contant{
+  margin: 0px 50px 50px 50px;
+}
+.sec3-card-container{
+  display: flex;
+  justify-content: space-between;
+  
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.sec3-card-container::-webkit-scrollbar{
+  display: none;
+}
+.sec3-img{
+  padding: 10px;
+}
+.sec3-img img{
+  height: 240px;
+  width: 240px;
+  border-radius: 8px;
+  object-fit: contain;
+  background-size: 100%;
+  cursor: pointer;
+}
+.sec3-img img:hover{
+  transform: scale(1.1);
+  transition: 200ms;
+}
+.sec3-card{
+  width: 260px;
+  height: auto;
+  background-color: white;
+  border-radius: 18px;
+  padding-bottom: 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.sec3-card p{
+  padding-left: 15px;
+  font-weight: bold;
+  font-family: "Dosis", sans-serif;
+}
+.star-rated{
+  padding-left: 15px;
+}
+.star-rated img{
+  width: 20px;
+}
+.sec3-card button{
+  margin-left: 15px;
+  border-radius: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
+
+
+
+
