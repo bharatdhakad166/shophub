@@ -23,6 +23,7 @@ body::-webkit-scrollbar{
   justify-content: space-evenly;
   padding: 0 16px;
   gap: 14px;
+  position: relative;
 }
 .logo {
   color: rgb(47, 128, 190);
@@ -41,16 +42,18 @@ body::-webkit-scrollbar{
 .hamburger {
   display: none;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 5px;
   cursor: pointer;
+  padding: 6px;
+  user-select: none;
 }
 .hamburger span {
   width: 24px;
   height: 3px;
   border-radius: 3px;
   background-color: black;
-  transition: 0.2s ease;
 }
 .nav-menu {
   display: flex;
@@ -65,45 +68,9 @@ body::-webkit-scrollbar{
   gap: 43px;
 }
 
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown button {
-  background-color: transparent;
-  border: none;
-  font-family: "Dosis", sans-serif;
-  font-size: 20px;
-}
-.dropdown-contant {
+.search-toggle {
   display: none;
-  position: absolute;
-  background-color: white;
-  font-family: "Dosis", sans-serif;
-  z-index: 1;
-  min-width: 103px;
-  font-size: 18px;
-  text-align: center;
-  border-radius: 0px 0px 10px 10px;
 }
-.dropdown-contant a {
-  line-height: 30px;
-  display: block;
-}
-.dropdown img {
-  width: 20px;
-  padding-top: 6px;
-}
-.dropdown:hover .dropdown-contant {
-  display: block;
-}
-.dropdown-button {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
 
 .searchBar {
 
@@ -135,6 +102,11 @@ input::placeholder {
   right: 8px;
   padding-left: 0;
 }
+.search-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
 .nav-functions li {
   display: flex;
   align-items: center;
@@ -155,13 +127,6 @@ input::placeholder {
 .cart img {
   width: 20px;
 }
-
-
-
-
-
-
-
 .contant {
 
   background-image: url(images/main-bg-banner.jpg);
@@ -443,14 +408,15 @@ input::placeholder {
 
   .hamburger {
     display: flex;
+    order: 3;
   }
 
   .nav-menu {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
-    width: 100%;
+    right: 0;
+    width: 50%;
     background-color: white;
     padding: 14px;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
@@ -465,50 +431,70 @@ input::placeholder {
     display: flex;
   }
 
-  .menu-toggle:checked + .hamburger span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .menu-toggle:checked + .hamburger span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle:checked + .hamburger span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
   .nav-functions {
-    justify-content: center;
-    gap: 12px;
+    width: 100%;
   }
 
   .nav-functions li {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
     font-size: 16px;
   }
 
-  .dropdown button {
-    font-size: 16px;
+  .nav-functions li > a,
+  .cart {
+    width: 100%;
+    padding: 8px 4px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .searchBar {
-    width: 100%;
-    max-width: 100%;
-    justify-content: center;
+    display: flex;
+    width: auto;
+    border: none;
+    padding: 0;
+    order: 2;
+    margin-left: auto;
+    position: static;
   }
 
   .searchBar input {
-    height: 38px;
+    display: none;
+    width: 100%;
+    height: 60px;
     font-size: 16px;
-    padding-right: 36px;
-    width: min(100%, 420px);
+    text-align: left;
+    padding: 0 52px 0 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0;
+    z-index: 1000002;
   }
 
-  .searchBar img {
+  .searchBar .search-icon {
+    position: relative;
+    padding: 4px;
+    z-index: 1000003;
+  }
+
+  .searchBar .search-icon img {
+    position: static;
     width: 24px;
-    right: 10px;
+  }
+
+  .search-toggle:checked + .searchBar input {
+    display: block;
+  }
+
+  .search-toggle:checked ~ .hamburger {
+    display: none;
   }
 
   .contant {
@@ -542,6 +528,10 @@ input::placeholder {
   .hamburger span {
     width: 22px;
     height: 2.5px;
+  }
+
+  .nav-menu {
+    width: 70%;
   }
 
   .nav-functions {
