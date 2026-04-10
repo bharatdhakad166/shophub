@@ -68,10 +68,6 @@ body::-webkit-scrollbar{
   gap: 43px;
 }
 
-.search-toggle {
-  display: none;
-}
-
 .searchBar {
 
   display: flex;
@@ -80,6 +76,7 @@ body::-webkit-scrollbar{
   position: relative;
 }
 .searchBar input {
+  display: block;
   border-radius: 12px;
   height: 32px;
   width: 400px;
@@ -91,21 +88,40 @@ body::-webkit-scrollbar{
   font-family: "Dosis", sans-serif;
   font-size: 20px;
   font-weight: 500;
+  padding: 0 42px 0 10px;
 }
 input::placeholder {
   opacity: 0.3;
-}
-.searchBar img {
-  width: 32px;
-  position: absolute;
-  z-index: 0;
-  right: 8px;
-  padding-left: 0;
 }
 .search-icon {
   display: flex;
   align-items: center;
   cursor: pointer;
+  padding: 4px;
+  position: absolute;
+  right: 10px;
+  z-index: 2;
+}
+.search-icon img {
+  width: 20px;
+  position: static;
+}
+.mobile-search-icon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+}
+.mobile-search-icon img {
+  width: 22px;
+}
+.mobile-search-toggle,
+.mobile-search-input {
+  display: none;
+}
+.mobile-search-close {
+  display: none;
 }
 .nav-functions li {
   display: flex;
@@ -343,14 +359,6 @@ input::placeholder {
     margin-left: 0;
   }
 
-  .searchBar {
-    width: min(100%, 520px);
-  }
-
-  .searchBar input {
-    width: 100%;
-  }
-
   .nav-functions {
     gap: 20px;
   }
@@ -388,7 +396,7 @@ input::placeholder {
 
 @media (max-width: 768px) {
   .navbar {
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 10px;
   }
 
@@ -405,26 +413,73 @@ input::placeholder {
     opacity: 0;
     pointer-events: none;
   }
+  .mobile-search-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .mobile-search-input {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 60px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 0 44px 0 14px;
+    font-size: 16px;
+    font-family: "Dosis", sans-serif;
+    z-index: 1000005;
+    background-color: white;
+  }
+  .mobile-search-close {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    z-index: 1000006;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: #333;
+    font-family: Arial, sans-serif;
+  }
+  .mobile-search-toggle:checked ~ .mobile-search-input {
+    display: block;
+  }
+  .mobile-search-toggle:checked ~ .mobile-search-close {
+    display: block;
+  }
 
   .hamburger {
     display: flex;
     order: 3;
+    margin-left: 8px;
+  }
+  .mobile-search-icon {
+    display: flex;
+    order: 2;
+    margin-left: auto;
   }
 
   .nav-menu {
     display: none;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 1px);
     right: 0;
     width: 50%;
     background-color: white;
     padding: 14px;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-    z-index: 1000001;
+    z-index: 1000004;
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
+    max-height: calc(100vh - 65px);
+    overflow-y: auto;
   }
 
   .menu-toggle:checked ~ .nav-menu {
@@ -451,49 +506,33 @@ input::placeholder {
   }
 
   .searchBar {
-    display: flex;
-    width: auto;
+    display: none;
+    width: 100%;
     border: none;
     padding: 0;
-    order: 2;
-    margin-left: auto;
-    position: static;
+    margin-left: 0;
+    position: relative;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .searchBar input {
     display: none;
     width: 100%;
-    height: 60px;
+    height: 44px;
     font-size: 16px;
     text-align: left;
-    padding: 0 52px 0 14px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: white;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 0;
-    z-index: 1000002;
-  }
-
-  .searchBar .search-icon {
-    position: relative;
-    padding: 4px;
-    z-index: 1000003;
-  }
-
-  .searchBar .search-icon img {
+    padding: 0 12px;
     position: static;
-    width: 24px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    margin: 8px 0;
+    z-index: auto;
   }
 
-  .search-toggle:checked + .searchBar input {
-    display: block;
-  }
-
-  .search-toggle:checked ~ .hamburger {
+  .nav-menu .nav-functions:first-child li a:last-child {
     display: none;
   }
 
