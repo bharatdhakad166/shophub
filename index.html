@@ -17,48 +17,48 @@
                 <img src="Icons/logo.png" alt="">
                 <h1>ShopHub</h1>
             </div>
-            <div class="nav-functions">
-                <li>
-                    <a href="">Home</a>
-                    <a href="">Deals</a>
-                </li>
-                <div class="dropdown">
-                    <div class="dropdown-button">
-                        <button class="categories"><a href="">Categories</a></button>
-                        <img src="Icons/dropdown-arrow.png"/>
-                    </div>
-                    <div class="dropdown-contant">
-                        <a href="">Books</a>
-                        <a href="">Computers</a>
-                        <a href="">Fashion</a>
-                        <a href="">Electronic</a>
-                        <a href="">Grocery</a>
-                        <a href="">Games</a>
-                        <a href="">Mobiles</a>
-                        <a href="">Toys</a>
-
-                    </div>
-                </div>
-            </div>
-            <div class="searchBar">
-                <input type="text" placeholder="S E A R C H    I T E M S">
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <input type="checkbox" id="mobile-search-toggle" class="mobile-search-toggle">
+            <input type="text" class="mobile-search-input" placeholder="S E A R C H    I T E M S">
+            <label for="mobile-search-toggle" class="mobile-search-close" aria-label="Close search">×</label>
+            <label for="mobile-search-toggle" class="mobile-search-icon" aria-label="Toggle search">
                 <img src="Icons/search.png" alt="">
-            </div>
-            <div class="nav-functions">
-                <li>
-                    <div class="cart">
-                        <img src="Icons/user.png" alt="">
-                        <a href="">Account</a>
-                    </div>
-                    <div class="cart">
-                        <img src="Icons/wishlist.png" alt="">
-                        <a href="">Wishlist</a>
-                    </div>
-                    <div class="cart">
-                        <img src="Icons/shopping-cart.png" alt="">
-                        <a href="">Cart</a>
-                    </div>
-                </li>
+            </label>
+            <label for="menu-toggle" class="hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="nav-menu">
+                <div class="nav-functions">
+                    <li>
+                        <a href="">Home</a>
+                        <a href="">Deals</a>
+                        <a href="">Categories</a>
+                    </li>
+                </div>
+                <div class="searchBar">
+                    <input type="text" id="search-input" placeholder="S E A R C H    I T E M S">
+                    <span class="search-icon" aria-hidden="true">
+                        <img src="Icons/search.png" alt="">
+                    </span>
+                </div>
+                <div class="nav-functions">
+                    <li>
+                        <div class="cart">
+                            <img src="Icons/user.png" alt="">
+                            <a href="">Account</a>
+                        </div>
+                        <div class="cart">
+                            <img src="Icons/wishlist.png" alt="">
+                            <a href="">Wishlist</a>
+                        </div>
+                        <div class="cart">
+                            <img src="Icons/shopping-cart.png" alt="">
+                            <a href="">Cart</a>
+                        </div>
+                    </li>
+                </div>
             </div>
         </div>
     </header>
@@ -78,7 +78,7 @@
             </div>
         </div>
     </section>
-    
+
 
 
 
@@ -610,6 +610,19 @@
 
 
 
-    
+    <script>
+      const mobileSearchToggle = document.getElementById("mobile-search-toggle");
+      const mobileSearchInput = document.querySelector(".mobile-search-input");
+
+      if (mobileSearchToggle && mobileSearchInput) {
+        mobileSearchToggle.addEventListener("change", () => {
+          if (mobileSearchToggle.checked && window.innerWidth <= 768) {
+            setTimeout(() => {
+              mobileSearchInput.focus();
+            }, 50);
+          }
+        });
+      }
+    </script>
   </body>
 </html>

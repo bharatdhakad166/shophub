@@ -1,6 +1,7 @@
 * {
   margin: 0%;
   padding: 0%;
+  box-sizing: border-box;
 }
 body {
   background-color: rgb(205, 205, 205); 
@@ -20,6 +21,9 @@ body::-webkit-scrollbar{
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  padding: 0 16px;
+  gap: 14px;
+  position: relative;
 }
 .logo {
   color: rgb(47, 128, 190);
@@ -32,62 +36,51 @@ body::-webkit-scrollbar{
   margin-left: 24px;
   margin-right: 12px;
 }
+.menu-toggle {
+  display: none;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  user-select: none;
+}
+.hamburger span {
+  width: 24px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: black;
+}
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 14px;
+  flex: 1;
+}
 .nav-functions {
   display: flex;
   align-items: center;
   gap: 43px;
 }
 
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown button {
-  background-color: transparent;
-  border: none;
-  font-family: "Dosis", sans-serif;
-  font-size: 20px;
-}
-.dropdown-contant {
-  display: none;
-  position: absolute;
-  background-color: white;
-  font-family: "Dosis", sans-serif;
-  z-index: 1;
-  min-width: 103px;
-  font-size: 18px;
-  text-align: center;
-  border-radius: 0px 0px 10px 10px;
-}
-.dropdown-contant a {
-  line-height: 30px;
-  display: block;
-}
-.dropdown img {
-  width: 20px;
-  padding-top: 6px;
-}
-.dropdown:hover .dropdown-contant {
-  display: block;
-}
-.dropdown-button {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-
 .searchBar {
 
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
 }
 .searchBar input {
+  display: block;
   border-radius: 12px;
   height: 32px;
   width: 400px;
+  max-width: 100%;
   position: relative;
   z-index: 1;
   background-color: transparent;
@@ -95,15 +88,40 @@ body::-webkit-scrollbar{
   font-family: "Dosis", sans-serif;
   font-size: 20px;
   font-weight: 500;
+  padding: 0 42px 0 10px;
 }
 input::placeholder {
   opacity: 0.3;
 }
-.searchBar img {
-  width: 32px;
+.search-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px;
   position: absolute;
-  z-index: 0;
-  padding-left: 364px;
+  right: 10px;
+  z-index: 2;
+}
+.search-icon img {
+  width: 20px;
+  position: static;
+}
+.mobile-search-icon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+}
+.mobile-search-icon img {
+  width: 22px;
+}
+.mobile-search-toggle,
+.mobile-search-input {
+  display: none;
+}
+.mobile-search-close {
+  display: none;
 }
 .nav-functions li {
   display: flex;
@@ -111,6 +129,7 @@ input::placeholder {
   font-family: "Dosis", sans-serif;
   gap: 43px;
   font-size: 20px;
+  list-style: none;
 }
 .navcontainer a {
   text-decoration: none;
@@ -124,11 +143,6 @@ input::placeholder {
 .cart img {
   width: 20px;
 }
-
-
-
-
-
 .contant {
 
   background-image: url(images/main-bg-banner.jpg);
@@ -175,6 +189,11 @@ input::placeholder {
 
 
 
+
+
+
+
+
 .sec2-container{
 
     margin-top: 50px;
@@ -191,6 +210,8 @@ input::placeholder {
 .sec2-card-container{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 .card{
     height: 300px;
@@ -202,7 +223,9 @@ input::placeholder {
     text-align: center;
     font-family: "Dosis", sans-serif;
     cursor: pointer;
-     transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
+    flex: 1 1 180px;
+    max-width: 220px;
 }
 .card:hover{
   transform: scale(1.1);
@@ -246,7 +269,7 @@ input::placeholder {
 .sec3-card-container{
   display: flex;
   justify-content: space-between;
-  
+  gap: 20px;
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -254,48 +277,368 @@ input::placeholder {
   display: none;
 }
 .sec3-img{
+  width: 100%;
+  height: 220px;
   padding: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
 }
 .sec3-img img{
-  height: 240px;
-  width: 240px;
-  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  max-width: 210px;
+  max-height: 210px;
+  border-radius: 18px;
   object-fit: contain;
   background-size: 100%;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 .sec3-img img:hover{
-  transform: scale(1.1);
-  transition: 200ms;
+  transform: scale(1.03);
 }
 .sec3-card{
   width: 260px;
+  min-width: 240px;
   height: auto;
   background-color: white;
   border-radius: 18px;
   padding-bottom: 10px;
   margin-right: 20px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 .sec3-card p{
   padding-left: 15px;
+  padding-right: 15px;
+  margin: 0;
   font-weight: bold;
   font-family: "Dosis", sans-serif;
+  line-height: 1.1;
+}
+.sec3-card p:nth-of-type(1){
+  min-height: 30px;
+  line-height: 1.2;
+}
+.sec3-card p:nth-of-type(2){
+  min-height: 18px;
 }
 .star-rated{
   padding-left: 15px;
+  margin-top: 4px;
+  min-height: 18px;
+  line-height: 1;
 }
 .star-rated img{
-  width: 20px;
+  width: 18px;
 }
 .sec3-card button{
   margin-left: 15px;
+  margin-top: 2px;
   border-radius: 20px;
   width: 100px;
-  height: 30px;
+  height: 28px;
   cursor: pointer;
+  align-self: flex-start;
+  margin-bottom: 0;
 }
 
+@media (max-width: 1024px) {
+  .navbar {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 14px;
+  }
+
+  .logo img {
+    margin-left: 0;
+  }
+
+  .nav-functions {
+    gap: 20px;
+  }
+
+  .nav-functions li {
+    gap: 18px;
+    font-size: 18px;
+  }
+
+  .contant {
+    height: 470px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .contant-details {
+    padding-left: 0;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .contant-details p {
+    font-size: 38px;
+  }
+
+  .contant-details h1 {
+    font-size: 64px;
+  }
+
+  .sec2-contant,
+  .sec3-contant {
+    margin: 0 20px 30px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .logo h1 {
+    font-size: 28px;
+  }
+
+  .logo img {
+    width: 34px;
+  }
+
+  .menu-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .mobile-search-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .mobile-search-input {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 60px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 0 44px 0 14px;
+    font-size: 16px;
+    font-family: "Dosis", sans-serif;
+    z-index: 1000005;
+    background-color: white;
+  }
+  .mobile-search-close {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    z-index: 1000006;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: #333;
+    font-family: Arial, sans-serif;
+  }
+  .mobile-search-toggle:checked ~ .mobile-search-input {
+    display: block;
+  }
+  .mobile-search-toggle:checked ~ .mobile-search-close {
+    display: block;
+  }
+
+  .hamburger {
+    display: flex;
+    order: 3;
+    margin-left: 8px;
+  }
+  .mobile-search-icon {
+    display: flex;
+    order: 2;
+    margin-left: auto;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    right: 0;
+    width: 50%;
+    background-color: white;
+    padding: 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    z-index: 1000004;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    max-height: calc(100vh - 65px);
+    overflow-y: auto;
+  }
+
+  .menu-toggle:checked ~ .nav-menu {
+    display: flex;
+  }
+
+  .nav-functions {
+    width: 100%;
+  }
+
+  .nav-functions li {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 16px;
+  }
+
+  .nav-functions li > a,
+  .cart {
+    width: 100%;
+    padding: 8px 4px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .searchBar {
+    display: none;
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin-left: 0;
+    position: relative;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .searchBar input {
+    display: none;
+    width: 100%;
+    height: 44px;
+    font-size: 16px;
+    text-align: left;
+    padding: 0 12px;
+    position: static;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    margin: 8px 0;
+    z-index: auto;
+  }
+
+  .nav-menu .nav-functions:first-child li a:last-child {
+    display: none;
+  }
+  .sec2-card-container:hover{
+    transform: scale(0);
+  }
+  .contant {
+    height: 420px;
+  }
+
+  .contant-details p {
+    font-size: 30px;
+  }
+
+  .contant-details h1 {
+    font-size: 48px;
+  }
+
+  .sec2-card-container {
+    justify-content: center;
+  }
+
+  .card {
+    width: calc(50% - 12px);
+    max-width: none;
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 24px;
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2.5px;
+  }
+
+  .nav-menu {
+    width: 70%;
+  }
+
+  .nav-functions {
+    gap: 10px;
+  }
+
+  .nav-functions li {
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .cart img {
+    width: 16px;
+  }
+
+  .contant {
+    height: 360px;
+  }
+
+  .contant-details p {
+    font-size: 24px;
+  }
+
+  .contant-details h1 {
+    font-size: 38px;
+  }
+
+  .contant-details button {
+    font-size: 16px;
+  }
+
+  .sec2-contant,
+  .sec3-contant {
+    margin: 0 12px 24px 12px;
+  }
+
+  #line {
+    font-size: 22px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .sec3-card {
+    min-width: 210px;
+    width: 210px;
+    height: auto;
+  }
+
+  .sec3-img img {
+    width: 100%;
+    height: 100%;
+    max-width: 190px;
+    max-height: 190px;
+  }
+
+  .sec3-img {
+    height: 180px;
+  }
+
+  .sec3-card p:nth-of-type(1){
+    min-height: 40px;
+    font-size: 15px;
+  }
+}
 
 
 
